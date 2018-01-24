@@ -1,0 +1,48 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.9.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		//classpath ("mysql:mysql-connector-java:5.7.18")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
+/*
+task copySqlImport(type: Copy) {
+	from 'src/main/resources'
+	into 'build/classes'
+}mysql
+build.dependsOn(copySqlImport)
+*/
+
+
+group = 'heroes'
+version = '0.0.1-SNAPSHOT'
+// baseName = 'backend'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile('org.springframework.boot:spring-boot-starter-data-rest')
+
+	     /// https://mvnrepository.com/artifact/mysql/mysql-connector-java
+	compile("org.springframework.boot:spring-boot-starter-security")
+	compile("io.jsonwebtoken:jjwt:0.7.0")
+	runtime('mysql:mysql-connector-java:5.7.18')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+	
+
+}
